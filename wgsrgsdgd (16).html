@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VantaWebhook • Cosmic Anonymous Messaging</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&family=Roboto+Mono:wght@300;400;500;700&family=Montserrat:wght@400;500;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="icon" type="image/jpeg" href="https://jacehawkins16-svg.github.io/anonymous-msg/239895937.jpg">
+  <script>
+    function setFavicon(url) {
+      document.querySelectorAll('link[rel*="icon"]').forEach(el => el.remove());
+      const link = document.createElement('link');
+      link.rel = 'icon'; link.type = 'image/jpeg'; link.href = url;
+      document.head.appendChild(link);
+    }
+    setFavicon('https://jacehawkins16-svg.github.io/anonymous-msg/239895937.jpg');
+  </script>
+
+  <script>
+    (function() {
+      const fontURL = "https://jacehawkins16-svg.github.io/jaces-unblocked-games/SuperJoyful-lxwPq.ttf";
+      const style = document.createElement('style');
+      style.textContent = `
+        @font-face {
+          font-family: 'SuperJoyful';
+          src: url('${fontURL}') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+          font-display: swap;
+        }
+      `;
+      document.head.appendChild(style);
+    })();
+  </script>
+
+  <script>
+    (function() {
+      const titles = [
+        "VantaWebhook • Cosmic Anonymous",
+        "Join /ERNQpp8NpE • Space Edition",
+        "Send Messages Across the Void",
+        "Encrypted • Anonymous • Stellar"
+      ];
+      let idx = 0;
+      let char = 0;
+      let forward = true;
+
+      function type() {
+        const current = titles[idx];
+        if (forward) {
+          document.title = current.substring(0, char++) + "█";
+          if (char > current.length) {
+            forward = false;
+            setTimeout(type, 1800);
+            return;
+          }
+        } else {
+          document.title = current.substring(0, --char) + (char ? "█" : "");
+          if (char <= 0) {
+            forward = true;
+            idx = (idx + 1) % titles.length;
+          }
+        }
+        setTimeout(type, forward ? 70 : 40);
+      }
+      type();
+    })();
+  </script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['Roboto Mono', 'monospace'],
+            orbit: ['Orbitron', 'sans-serif'],
+            mont: ['Montserrat', 'sans-serif'],
+            joy: ['SuperJoyful', 'cursive']
+          },
+          colors: {
+            cosmic: {
+              900: '#0a001f',
+              800: '#120036',
+              700: '#1a0052',
+              600: '#2c008a',
+              500: '#4b00d9',
+              400: '#7c3aed',
+              300: '#a78bfa',
+              200: '#c4b5fd',
+              100: '#e0d7ff'
+            },
+            nebula: {
+              pink: '#ff61d2',
+              cyan: '#00f0ff',
+              purple: '#a855f7'
+            }
+          },
+          animation: {
+            'stars-twinkle': 'twinkle 8s infinite ease-in-out',
+            'nebula-drift': 'nebulaDrift 120s linear infinite',
+            'float-slow': 'float 18s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+            'spin-slow': 'spinSlow 180s linear infinite',
+            'meteor': 'meteor 12s linear infinite'
+          },
+          keyframes: {
+            twinkle: { '0%,100%': { opacity: '0.4' }, '50%': { opacity: '1' } },
+            nebulaDrift: { '0%': { transform: 'translate(0,0)' }, '100%': { transform: 'translate(-20%, -15%)' } },
+            float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-18px)' } },
+            pulseGlow: { '0%,100%': { boxShadow: '0 0 20px rgba(124,58,237,0.3)' }, '50%': { boxShadow: '0 0 60px rgba(124,58,237,0.7)' } },
+            spinSlow: { 'from': { transform: 'rotate(0deg)' }, 'to': { transform: 'rotate(360deg)' } },
+            meteor: { '0%': { transform: 'translateX(0) translateY(-100vh)', opacity: '0' }, '10%': { opacity: '1' }, '100%': { transform: 'translateX(100vw) translateY(100vh)', opacity: '0' } }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #000814;
+      color: #e0d7ff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .space-bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at bottom, #0a001f 0%, #000814 100%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .stars-layer {
+      position: fixed;
+      inset: 0;
+      background: transparent;
+      z-index: -1;
+      pointer-events: none;
+      animation: stars-twinkle 10s infinite;
+    }
+
+    .nebula {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(255,97,210,0.06), rgba(0,240,255,0.05));
+      opacity: 0.6;
+      animation: nebula-drift 140s linear infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .meteor {
+      position: absolute;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, #c4b5fd, #a78bfa, transparent);
+      transform: rotate(45deg);
+      opacity: 0;
+      animation: meteor linear infinite;
+      pointer-events: none;
+    }
+
+    .planet {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffffff33, transparent 60%);
+      box-shadow: 0 0 60px rgba(124,58,237,0.4);
+      animation: float-slow 24s ease-in-out infinite, spin-slow 300s linear infinite;
+    }
+
+    .glass {
+      background: rgba(10, 0, 31, 0.65);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(124,58,237,0.25);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5), inset 0 0 20px rgba(124,58,237,0.15);
+    }
+
+    .glow-text {
+      text-shadow: 0 0 20px #7c3aed, 0 0 40px #a855f7, 0 0 60px #c4b5fd;
+    }
+
+    .glow-neon {
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff, 0 0 40px #ff61d2;
+    }
+
+    textarea:focus, input:focus {
+      box-shadow: 0 0 40px rgba(124,58,237,0.6), 0 0 80px rgba(168,85,247,0.4);
+      border-color: #a855f7;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a001f;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#7c3aed, #a855f7, #c4b5fd);
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body class="relative">
+
+  <!-- Cosmic Background Layers -->
+  <div class="space-bg"></div>
+  <div class="nebula"></div>
+  <div class="stars-layer"></div>
+
+  <!-- Meteors -->
+  <div class="meteor" style="left:10%; top:-100px; animation-delay:0s; animation-duration:9s;"></div>
+  <div class="meteor" style="left:35%; top:-150px; animation-delay:3s; animation-duration:11s; transform:rotate(38deg);"></div>
+  <div class="meteor" style="left:65%; top:-80px; animation-delay:6s; animation-duration:13s; transform:rotate(52deg);"></div>
+  <div class="meteor" style="left:88%; top:-120px; animation-delay:2.5s; animation-duration:10s;"></div>
+
+  <!-- Floating Planets -->
+  <div class="planet w-64 h-64 top-20 left-[-10%] opacity-30" style="background: radial-gradient(circle at 30% 30%, #ff61d233, #a855f733 40%, transparent); animation-delay:0s;"></div>
+  <div class="planet w-96 h-96 bottom-[-20%] right-[-15%] opacity-25" style="background: radial-gradient(circle at 40% 20%, #00f0ff33, #7c3aed44 50%, transparent); animation-delay:8s;"></div>
+  <div class="planet w-48 h-48 top-[45%] left-[15%] opacity-40" style="background: radial-gradient(circle at 60% 30%, #c4b5fd44, #a78bfa55 60%, transparent); animation-delay:4s;"></div>
+
+  <div class="relative z-10 container mx-auto px-6 py-16 max-w-6xl">
+
+    <!-- Hero -->
+    <header class="text-center mb-24">
+      <div class="inline-flex items-center gap-5 mb-8 animate-float-slow">
+        <i class="fa-solid fa-rocket text-6xl text-nebula-cyan glow-neon"></i>
+        <h1 class="text-7xl md:text-8xl font-orbit font-black tracking-tighter glow-text bg-gradient-to-r from-cosmic-300 via-nebula-purple to-nebula-pink bg-clip-text text-transparent">
+          VantaWebhook
+        </h1>
+      </div>
+      <p class="text-3xl md:text-4xl font-mont font-light text-cosmic-200 max-w-4xl mx-auto leading-relaxed mb-10">
+        Anonymous messages traveling through the cosmos — straight to your Discord server
+      </p>
+      <div class="text-xl text-cosmic-300 mb-12">
+        No trace • No login • Protected by stellar-grade filters
+      </div>
+      <a href="https://discord.gg/ERNQpp8NpE" target="_blank" class="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-nebula-purple to-nebula-pink rounded-2xl text-white font-bold text-xl shadow-2xl shadow-nebula-purple/40 hover:shadow-nebula-purple/70 transition-all duration-500 hover:scale-105">
+        <i class="fa-brands fa-discord text-2xl"></i>
+        Join the Nebula • /ERNQpp8NpE
+      </a>
+    </header>
+
+    <!-- Features Grid -->
+    <section class="grid md:grid-cols-3 gap-10 mb-32">
+      <div class="glass rounded-3xl p-10 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-nebula-purple/50">
+        <div class="text-center mb-8">
+          <i class="fa-solid fa-user-astronaut text-7xl text-nebula-cyan glow-neon"></i>
+        </div>
+        <h3 class="text-3xl font-orbit font-bold text-center mb-6 text-cosmic-200">Complete Anonymity</h3>
+        <p class="text-cosmic-300 text-center text-lg leading-relaxed">
+          Your identity remains hidden in the void. No IP logs. No metadata. Pure cosmic privacy.
+        </p>
+      </div>
+
+      <div class="glass rounded-3xl p-10 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-nebula-pink/50">
+        <div class="text-center mb-8">
+          <i class="fa-solid fa-shield-halved text-7xl text-nebula-pink glow-neon"></i>
+        </div>
+        <h3 class="text-3xl font-orbit font-bold text-center mb-6 text-cosmic-200">Nebula-grade Security</h3>
+        <p class="text-cosmic-300 text-center text-lg leading-relaxed">
+          Advanced filtering blocks links, slurs, pings, trackers, invisible chars and more.
+        </p>
+      </div>
+
+      <div class="glass rounded-3xl p-10 transform hover:scale-105 transition-all duration-500 hover:shadow-2xl hover:shadow-cosmic-400/50">
+        <div class="text-center mb-8">
+          <i class="fa-solid fa-file-lines text-7xl text-cosmic-300 glow-text"></i>
+        </div>
+        <h3 class="text-3xl font-orbit font-bold text-center mb-6 text-cosmic-200">Infinite Reach</h3>
+        <p class="text-cosmic-300 text-center text-lg leading-relaxed">
+          Messages up to 50,000 characters — long texts automatically become secure .txt attachments.
+        </p>
+      </div>
+    </section>
+
+    <!-- Main Input Area -->
+    <section id="message-area" class="glass rounded-3xl p-12 md:p-16 shadow-2xl shadow-nebula-purple/40 mb-32 transform hover:shadow-nebula-purple/60 transition-all duration-700">
+      <div class="space-y-10">
+        <div class="flex justify-between items-center">
+          <label class="text-2xl font-mont font-semibold tracking-wide text-cosmic-200">
+            Transmit Your Message Into the Void
+          </label>
+          <span id="charCount" class="text-xl font-mono text-cosmic-300">0 / 50,000</span>
+        </div>
+
+        <textarea
+          id="message"
+          rows="14"
+          maxlength="50000"
+          placeholder="Your words will travel anonymously across the stars... (filtered for cosmic safety)"
+          class="w-full p-10 bg-cosmic-900/40 border border-cosmic-700/50 rounded-2xl text-cosmic-100 placeholder-cosmic-500 font-mono text-xl resize-y focus:outline-none transition-all duration-500 scrollbar-thin scrollbar-thumb-nebula-purple scrollbar-track-cosmic-800"
+        ></textarea>
+
+        <p class="text-base text-cosmic-400 italic text-center">
+          • Messages > 2000 chars sent as secure .txt attachment<br>
+          • Rate limit: 5 messages / minute — fair travel across the galaxy
+        </p>
+
+        <button
+          id="sendBtn"
+          class="w-full py-8 bg-gradient-to-r from-nebula-purple via-nebula-pink to-nebula-cyan text-white font-orbit font-bold text-2xl uppercase tracking-widest rounded-2xl shadow-2xl shadow-nebula-purple/60 hover:shadow-nebula-purple/90 transition-all duration-500 hover:scale-105 disabled:opacity-50 flex items-center justify-center gap-5"
+        >
+          <i class="fa-solid fa-paper-plane text-3xl"></i>
+          LAUNCH MESSAGE
+        </button>
+      </div>
+    </section>
+
+    <!-- Status -->
+    <div id="status-area" class="text-center text-2xl font-mont font-medium transition-all duration-600 opacity-0 min-h-[3rem]"></div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="relative z-10 mt-32 py-16 text-center border-t border-cosmic-700/30 bg-cosmic-900/20 backdrop-blur-xl">
+    <p class="text-cosmic-400 text-lg">
+      VantaWebhook • Cosmic Anonymous Messaging • Protected by the Void • 2026
+    </p>
+    <div class="mt-6 flex justify-center gap-10 text-cosmic-300">
+      <a href="#message-area">Send Message</a>
+      <a href="https://discord.gg/ERNQpp8NpE" target="_blank">Discord</a>
+      <span>Privacy • Security • Anonymity</span>
+    </div>
+  </footer>
+
+  <script>
+    const webhookUrl = "https://discord.com/api/webhooks/1475610677916860562/5XqPwKXUbZqw-x2VXPDFGO4zNxu6A4RVepBOiZfMXgkU25Wydj5vtITA94D07RMIA1f8";
+
+    const messageEl     = document.getElementById("message");
+    const countEl       = document.getElementById("charCount");
+    const btn           = document.getElementById("sendBtn");
+    const statusEl      = document.getElementById("status-area");
+    const messageArea   = document.getElementById("message-area");
+
+    const forbidden = [
+      /[\u200B-\u200D\uFEFF\u2028\u2029\u2060-\u206F]/g,
+      /\b(nigg(er|a|uh|let)|faggot|chink|kike|retard(ed)?|coon|jew(ed)?|spic|tranny|dyke|wetback|paki|gook)\b/gi,
+      /https?:\/\//gi, /www\./gi, /\.(com|org|net|io|gg|xyz|top|club|site|online|info|me|tv|co)\b/gi,
+      /discord\.(gg|com\/invite|app\.com\/invite)/gi,
+      /bit\.ly|t\.co|tinyurl\.com|goo\.gl/gi,
+      /@everyone|@here/gi,
+      /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b/g
+    ];
+
+    function isForbidden(text) {
+      return text && forbidden.some(r => r.test(text));
+    }
+
+    function showStatus(msg, type = "info") {
+      const colors = { success: "text-nebula-cyan", error: "text-red-400", warning: "text-yellow-400", info: "text-cosmic-200" };
+      statusEl.textContent = msg;
+      statusEl.className = `block ${colors[type]} font-medium transition-all duration-600 opacity-100 scale-100`;
+      setTimeout(() => statusEl.className += " opacity-0 scale-90", 7000);
+
+      // Smooth scroll to status when shown
+      statusEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    messageEl.addEventListener("input", () => {
+      const len = messageEl.value.length;
+      countEl.textContent = `${len} / 50,000`;
+      countEl.className = len > 40000 ? "text-yellow-300" : "text-cosmic-300";
+    });
+
+    const RATE_LIMIT = 5;
+    const RATE_WINDOW = 60000;
+    function canSend() {
+      const now = Date.now();
+      let hist = JSON.parse(localStorage.getItem("vantaCosmic") || "[]");
+      hist = hist.filter(t => now - t < RATE_WINDOW);
+      if (hist.length >= RATE_LIMIT) {
+        const left = Math.ceil((RATE_WINDOW - (now - hist[0])) / 1000);
+        showStatus(`Galactic cooldown: wait ${left}s`, "warning");
+        return false;
+      }
+      hist.push(now);
+      localStorage.setItem("vantaCosmic", JSON.stringify(hist));
+      return true;
+    }
+
+    async function launch() {
+      const text = messageEl.value.trim();
+      if (!text) return showStatus("The void awaits your words...", "warning");
+      if (isForbidden(text)) {
+        messageEl.value = "";
+        return showStatus("Transmission blocked — forbidden cosmic interference detected", "error");
+      }
+      if (!canSend()) return;
+
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner-third animate-spin text-3xl"></i> TRANSMITTING...';
+      btn.classList.add('animate-pulse');
+
+      try {
+        let res;
+        if (text.length <= 2000) {
+          res = await fetch(webhookUrl, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ content: text })
+          });
+        } else {
+          const blob = new Blob([text], { type: "text/plain" });
+          const fd = new FormData();
+          fd.append("file", blob, "cosmic_message.txt");
+          res = await fetch(webhookUrl, { method: "POST", body: fd });
+        }
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        showStatus("Message successfully launched into the cosmos!", "success");
+        messageEl.value = "";
+        countEl.textContent = "0 / 50,000";
+      } catch (e) {
+        showStatus("Transmission failed — black hole interference or rate limit", "error");
+        console.error(e);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane text-3xl"></i> LAUNCH MESSAGE';
+        btn.classList.remove('animate-pulse');
+      }
+    }
+
+    btn.addEventListener("click", launch);
+    messageEl.addEventListener("keydown", e => {
+      if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault();
+        launch();
+      }
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key.toLowerCase() === 'k') {
+        if (!document.fullscreenElement) document.documentElement.requestFullscreen();
+        else document.exitFullscreen();
+      }
+    });
+
+    // Smooth scroll to center of message area on page load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        if (messageArea) {
+          messageArea.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+          // Focus textarea after scroll animation starts
+          setTimeout(() => {
+            messageEl.focus();
+          }, 900);
+        }
+      }, 1000); // delay gives time for background elements to render
+    });
+  </script>
+</body>
+</html>
